@@ -8,6 +8,22 @@
 </head>
 <body>
 
+<h3><%= flash[:notice] %></h3>
+<% if signed_in? %>
+  <h3>Current user: <%= current_user.inspect %></h3>
+  <%= link_to 'Edit', edit_user_path(current_user) %>
+  <%= link_to 'Sign out', sign_out_path, method: :delete %>
+
+  <% if current_user.admin %>
+    <%= link_to 'List of Users', 'users'%>
+  <% end %>
+<% else %>
+
+  <p>Hi stranger! <%= link_to 'Sign in', new_session_path %></p>
+  <%= link_to 'Sign up!', new_user_path %>
+
+<% end %>
+
 <%= yield %>
 
 </body>

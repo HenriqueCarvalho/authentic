@@ -1,0 +1,24 @@
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <div class='errors'>
+      <h2>Uh oh, errors!</h2>
+      <% @user.errors.full_messages.each do |msg| %>
+        <p><%= msg %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class='field'>
+    <%= f.label :name %>
+    <%= f.text_field :name, :required => true %>
+  </div>
+
+  <div class='field'>
+    <%= f.label :email %>
+    <%= f.email_field :email, :required => true %>
+  </div>
+
+  <div class='field'>
+    <%= f.submit 'Save' %>
+  </div>
+<% end %>
